@@ -21,6 +21,7 @@
             color: #e0e7ff;
             line-height: 1.6;
             overflow-x: hidden;
+            font-size: 16px; /* Base font size */
         }
 
         /* Navigation */
@@ -47,7 +48,6 @@
             background-clip: text;
         }
 
-        /* FIX: Corrected nav links styling for desktop */
         .nav-links {
             display: flex;
             list-style: none;
@@ -76,10 +76,6 @@
             width: 100%;
         }
 
-        .nav-links li a:hover {
-            color: #00d9ff;
-        }
-
         /* Mobile Menu Button */
         .mobile-menu-btn {
             display: none;
@@ -100,33 +96,34 @@
             text-align: center;
             background: linear-gradient(135deg, #0a1628 0%, #1a2f5a 50%, #0f1f3d 100%);
             padding: 60px 5% 0;
-            position: relative;
-            overflow: hidden;
         }
         
         .hero-content {
             z-index: 1;
         }
-
+        
+        /* FIX: Bolder, responsive fonts for mobile */
         .hero-content h1 {
-            font-size: clamp(2.5rem, 8vw, 3.5rem);
+            font-size: clamp(3rem, 10vw, 4.5rem); /* Bolder on mobile */
             margin-bottom: 1rem;
             background: linear-gradient(45deg, #00d9ff, #7b2ff7);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
 
         .hero-content h2 {
-            font-size: clamp(1.2rem, 5vw, 1.8rem);
+            font-size: clamp(1.3rem, 5vw, 1.8rem);
             color: #b8c5e0;
             margin-bottom: 1rem;
         }
 
         .hero-content p {
-            font-size: clamp(0.9rem, 3vw, 1.2rem);
-            margin-bottom: 2rem;
+            font-size: clamp(1rem, 4vw, 1.2rem);
+            margin-bottom: 2.5rem;
             color: #8a9ab8;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .cta-button {
@@ -147,16 +144,14 @@
         }
 
         section:nth-child(even) { background: #0f1f3d; }
-        section:nth-child(odd) { background: #0a1628; }
 
         h2 {
-            font-size: clamp(2rem, 6vw, 2.5rem);
+            font-size: clamp(2rem, 7vw, 2.5rem);
             margin-bottom: 2rem;
             text-align: center;
             background: linear-gradient(45deg, #00d9ff, #7b2ff7);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
         
         .section-content {
@@ -192,7 +187,7 @@
         .contact-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
         .contact-item { background: #0f1f3d; padding: 1.5rem; border-radius: 15px; border: 1px solid #1a2f5a; text-align: center; }
         .contact-item h3 { color: #00d9ff; margin-bottom: 0.5rem; }
-        .contact-item a { color: #b8c5e0; text-decoration: none; }
+        .contact-item a { color: #b8c5e0; text-decoration: none; word-break: break-all; }
         
         footer { padding: 2rem 5%; text-align: center; background: #050d1a; color: #6b7a99;}
 
@@ -202,7 +197,7 @@
                 display: block;
             }
             .nav-links {
-                display: none; /* Hide desktop nav by default on mobile */
+                display: none;
                 position: absolute;
                 top: 100%;
                 left: 0;
@@ -213,7 +208,7 @@
                 border-bottom: 2px solid #00d9ff;
             }
             .nav-links.active {
-                display: flex; /* Show dropdown when active */
+                display: flex;
             }
             section {
                 padding: 4rem 5%;
@@ -222,12 +217,9 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav>
         <div class="logo">Mudia_dev</div>
-        <!-- FIX: This button now correctly controls the nav links -->
         <button class="mobile-menu-btn">☰</button>
-        <!-- FIX: Simplified nav-links structure -->
         <ul class="nav-links">
             <li><a href="#about">About</a></li>
             <li><a href="#skills">Skills</a></li>
@@ -253,7 +245,7 @@
             </div>
         </section>
 
-        <section id="skills" style="background: #0f1f3d;">
+        <section id="skills">
             <div class="section-content">
                 <h2>Technical Expertise</h2>
                 <div class="skills-grid">
@@ -268,49 +260,16 @@
         <section id="projects">
             <div class="section-content">
                 <h2>Featured Projects</h2>
-                <!-- FIX: Restored all four project cards -->
                 <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-thumb"></div>
-                        <div class="project-content">
-                            <h3 class="project-title">Secure E‑commerce API</h3>
-                            <p class="project-desc">Node.js backend with JWT auth, RBAC, and rate-limiting. Designed with OWASP best practices.</p>
-                            <ul class="tech-list"><li>Node.js</li><li>Express</li><li>MongoDB</li></ul>
-                            <div class="project-links"><a href="#" class="btn">Source</a><a href="#" class="btn btn-ghost">Live</a></div>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-thumb"></div>
-                        <div class="project-content">
-                            <h3 class="project-title">ThreatWatch Dashboard</h3>
-                            <p class="project-desc">Real-time security dashboard with alerts, anomaly charts, and SIEM integrations.</p>
-                            <ul class="tech-list"><li>React</li><li>WebSockets</li><li>Node.js</li></ul>
-                            <div class="project-links"><a href="#" class="btn">Source</a><a href="#" class="btn btn-ghost">Live</a></div>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-thumb"></div>
-                        <div class="project-content">
-                            <h3 class="project-title">Vuln Scanner CLI</h3>
-                            <p class="project-desc">Lightweight Python tool for scanning common CVEs with pluggable checkers and clean JSON reports.</p>
-                            <ul class="tech-list"><li>Python</li><li>AsyncIO</li><li>Requests</li></ul>
-                            <div class="project-links"><a href="#" class="btn">Source</a><a href="#" class="btn btn-ghost">PyPI</a></div>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-thumb"></div>
-                        <div class="project-content">
-                            <h3 class="project-title">Portfolio CMS (PHP)</h3>
-                            <p class="project-desc">Secure, simple CMS for portfolios with role management, CSRF protection, and content revisions.</p>
-                            <ul class="tech-list"><li>PHP</li><li>Laravel</li><li>MySQL</li></ul>
-                            <div class="project-links"><a href="#" class="btn">Source</a><a href="#" class="btn btn-ghost">Live</a></div>
-                        </div>
-                    </div>
+                    <div class="project-card"><div class="project-thumb"></div><div class="project-content"><h3 class="project-title">Secure E‑commerce API</h3><p class="project-desc">Node.js backend with JWT auth and RBAC.</p><ul class="tech-list"><li>Node.js</li><li>Express</li><li>MongoDB</li></ul><div class="project-links"><a href="#" class="btn">Source</a><a href="#" class="btn btn-ghost">Live</a></div></div></div>
+                    <div class="project-card"><div class="project-thumb"></div><div class="project-content"><h3 class="project-title">ThreatWatch Dashboard</h3><p class="project-desc">Real-time security dashboard with alerts.</p><ul class="tech-list"><li>React</li><li>WebSockets</li><li>Node.js</li></ul><div class="project-links"><a href="#" class="btn">Source</a><a href="#" class="btn btn-ghost">Live</a></div></div></div>
+                    <div class="project-card"><div class="project-thumb"></div><div class="project-content"><h3 class="project-title">Vuln Scanner CLI</h3><p class="project-desc">Python tool for scanning common CVEs.</p><ul class="tech-list"><li>Python</li><li>AsyncIO</li><li>Requests</li></ul><div class="project-links"><a href="#" class="btn">Source</a><a href="#" class="btn btn-ghost">PyPI</a></div></div></div>
+                    <div class="project-card"><div class="project-thumb"></div><div class="project-content"><h3 class="project-title">Portfolio CMS (PHP)</h3><p class="project-desc">Secure CMS with role management & CSRF.</p><ul class="tech-list"><li>PHP</li><li>Laravel</li><li>MySQL</li></ul><div class="project-links"><a href="#" class="btn">Source</a><a href="#" class="btn btn-ghost">Live</a></div></div></div>
                 </div>
             </div>
         </section>
 
-        <section id="contact" style="background: #0f1f3d;">
+        <section id="contact">
             <div class="section-content">
                 <h2>Get In Touch</h2>
                 <div class="contact-info">
@@ -328,16 +287,12 @@
     </footer>
 
     <script>
-        // FIX: Updated Javascript to match corrected HTML
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const navLinks = document.querySelector('.nav-links');
-
         mobileMenuBtn.addEventListener('click', () => {
             navLinks.classList.toggle('active');
             mobileMenuBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
         });
-        
-        // Close menu when a link is clicked
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 if (navLinks.classList.contains('active')) {
