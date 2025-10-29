@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mudia_dev | Cybersecurity & Web Development Expert</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a1628;
+            color: #e0e7ff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(10, 22, 40, 0.95);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid #00d9ff;
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #00d9ff, #7b2ff7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* FIX: Corrected nav links styling for desktop */
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-links li a {
+            color: #e0e7ff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #00d9ff;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links li a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links li a:hover {
+            color: #00d9ff;
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #e0e7ff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, #0a1628 0%, #1a2f5a 50%, #0f1f3d 100%);
+            padding: 60px 5% 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 8vw, 3.5rem);
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #00d9ff, #7b2ff7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content h2 {
+            font-size: clamp(1.2rem, 5vw, 1.8rem);
+            color: #b8c5e0;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
+            margin-bottom: 2rem;
+            color: #8a9ab8;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #00d9ff, #7b2ff7);
+            color: #fff;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 5px 15px rgba(0, 217, 255, 0.3);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 5%;
+        }
+
+        section:nth-child(even) { background: #0f1f3d; }
+        section:nth-child(odd) { background: #0a1628; }
+
+        h2 {
+            font-size: clamp(2rem, 6vw, 2.5rem);
+            margin-bottom: 2rem;
+            text-align: center;
+            background: linear-gradient(45deg, #00d9ff, #7b2ff7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .section-content {
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Skills */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+        .skill-card { background: #0f1f3d; padding: 2rem; border-radius: 15px; border: 1px solid #1a2f5a; transition: all 0.3s ease; }
+        .skill-card:hover { transform: translateY(-5px); border-color: #00d9ff; }
+        .skill-card h3 { color: #00d9ff; margin-bottom: 1rem; }
+        .skill-card ul { list-style: none; }
+        .skill-card li { padding: 0.3rem 0; }
+        .skill-card li::before { content: "✓ "; color: #00d9ff; }
+
+        /* Projects */
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+        .project-card { background: #0f1f3d; border-radius: 16px; border: 1px solid #1a2f5a; overflow: hidden; transition: all 0.3s ease; display: flex; flex-direction: column; }
+        .project-card:hover { transform: translateY(-8px); border-color: #00d9ff; }
+        .project-thumb { width: 100%; aspect-ratio: 16/9; background: #1a2f5a; }
+        .project-content { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+        .project-title { font-size: 1.2rem; color: #00d9ff; }
+        .project-desc { margin: 0.5rem 0 1rem; flex-grow: 1; }
+        .tech-list { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; }
+        .tech-list li { font-size: 0.8rem; background: #1a2f5a; padding: 0.25rem 0.6rem; border-radius: 999px; }
+        .project-links { margin-top: 1rem; display: flex; gap: 1rem; }
+        .btn { background: linear-gradient(45deg, #00d9ff, #7b2ff7); color: #fff; padding: 0.5rem 1rem; border-radius: 50px; text-decoration: none; font-weight: bold; }
+        .btn-ghost { background: transparent; border: 1px solid #00d9ff; color: #00d9ff; }
+
+        /* Contact */
+        .contact-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+        .contact-item { background: #0f1f3d; padding: 1.5rem; border-radius: 15px; border: 1px solid #1a2f5a; text-align: center; }
+        .contact-item h3 { color: #00d9ff; margin-bottom: 0.5rem; }
+        .contact-item a { color: #b8c5e0; text-decoration: none; }
+        
+        footer { padding: 2rem 5%; text-align: center; background: #050d1a; color: #6b7a99;}
+
+        /* Mobile Menu Logic */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            .nav-links {
+                display: none; /* Hide desktop nav by default on mobile */
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(10, 22, 40, 0.98);
+                flex-direction: column;
+                padding: 1rem 0;
+                border-bottom: 2px solid #00d9ff;
+            }
+            .nav-links.active {
+                display: flex; /* Show dropdown when active */
+            }
+            section {
+                padding: 4rem 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Mudia_dev</div>
+        <!-- FIX: This button now correctly controls the nav links -->
+        <button class="mobile-menu-btn">☰</button>
+        <!-- FIX: Simplified nav-links structure -->
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Mudia_dev</h1>
+                <h2>Oyedoh David</h2>
+                <p>Cybersecurity Expert | Full-Stack Developer | Security Consultant</p>
+                <a href="#contact" class="cta-button">Let's Work Together</a>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="section-content">
+                <h2>About Me</h2>
+                <p style="text-align: center; max-width: 800px; margin: 0 auto;">I'm Oyedoh David, professionally known as <strong>Mudia_dev</strong>, a dedicated cybersecurity specialist and full-stack developer with extensive experience in building secure, scalable web applications.</p>
+            </div>
+        </section>
+
+        <section id="skills" style="background: #0f1f3d;">
+            <div class="section-content">
+                <h2>Technical Expertise</h2>
+                <div class="skills-grid">
+                    <div class="skill-card"><h3>🔐 Cybersecurity</h3><ul><li>Penetration Testing</li><li>Vulnerability Assessment</li><li>Security Auditing</li></ul></div>
+                    <div class="skill-card"><h3>💻 Backend</h3><ul><li>Node.js & Express</li><li>PHP & Laravel</li><li>Python & Django</li></ul></div>
+                    <div class="skill-card"><h3>🎨 Frontend</h3><ul><li>JavaScript/TypeScript</li><li>React.js</li><li>HTML5 & CSS3</li></ul></div>
+                    <div class="skill-card"><h3>🛠️ Tools</h3><ul><li>Git & GitHub</li><li>Docker</li><li>Linux/Unix</li></ul></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="section-content">
+                <h2>Featured Projects</h2>
+                <!-- FIX: Restored all four project cards -->
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-thumb"></div>
+                        <div class="project-content">
+                            <h3 class="project-title">Secure E‑commerce API</h3>
+                            <p class="project-desc">Node.js backend with JWT auth, RBAC, and rate-limiting. Designed with OWASP best practices.</p>
+                            <ul class="tech-list"><li>Node.js</li><li>Express</li><li>MongoDB</li></ul>
+                            <div class="project-links"><a href="#" class="btn">Source</a><a href="#" class="btn btn-ghost">Live</a></div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-thumb"></div>
+                        <div class="project-content">
+                            <h3 class="project-title">ThreatWatch Dashboard</h3>
+                            <p class="project-desc">Real-time security dashboard with alerts, anomaly charts, and SIEM integrations.</p>
+                            <ul class="tech-list"><li>React</li><li>WebSockets</li><li>Node.js</li></ul>
+                            <div class="project-links"><a href="#" class="btn">Source</a><a href="#" class="btn btn-ghost">Live</a></div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-thumb"></div>
+                        <div class="project-content">
+                            <h3 class="project-title">Vuln Scanner CLI</h3>
+                            <p class="project-desc">Lightweight Python tool for scanning common CVEs with pluggable checkers and clean JSON reports.</p>
+                            <ul class="tech-list"><li>Python</li><li>AsyncIO</li><li>Requests</li></ul>
+                            <div class="project-links"><a href="#" class="btn">Source</a><a href="#" class="btn btn-ghost">PyPI</a></div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-thumb"></div>
+                        <div class="project-content">
+                            <h3 class="project-title">Portfolio CMS (PHP)</h3>
+                            <p class="project-desc">Secure, simple CMS for portfolios with role management, CSRF protection, and content revisions.</p>
+                            <ul class="tech-list"><li>PHP</li><li>Laravel</li><li>MySQL</li></ul>
+                            <div class="project-links"><a href="#" class="btn">Source</a><a href="#" class="btn btn-ghost">Live</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" style="background: #0f1f3d;">
+            <div class="section-content">
+                <h2>Get In Touch</h2>
+                <div class="contact-info">
+                    <div class="contact-item"><h3>📧 Email</h3><a href="mailto:oyedohosemudiamen@gmail.com">oyedohosemudiamen@gmail.com</a></div>
+                    <div class="contact-item"><h3>💬 WhatsApp</h3><a href="https://wa.me/2348030646882" target="_blank" rel="noopener">Message Me</a></div>
+                    <div class="contact-item"><h3>💼 GitHub</h3><a href="https://github.com/DavidMudia" target="_blank" rel="noopener">DavidMudia</a></div>
+                    <div class="contact-item"><h3>🔗 LinkedIn</h3><a href="https://www.linkedin.com/in/david-mudia-57638a2aa/" target="_blank" rel="noopener">Oyedoh David</a></div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 Mudia_dev | Oyedoh David. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // FIX: Updated Javascript to match corrected HTML
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
+        
+        // Close menu when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.textContent = '☰';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
