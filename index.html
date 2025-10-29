@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,6 +50,9 @@
             font-weight: bold;
             background: linear-gradient(45deg, #00d9ff, #7b2ff7);
             -webkit-background-clip: text;
+            /* For Safari/Chrome */
+            background-clip: text;
+            /* The standard property (THE FIX) */
             -webkit-text-fill-color: transparent;
         }
 
@@ -69,7 +73,8 @@
             background: none;
             border: none;
             color: #e0e7ff;
-            font-size: 1.8rem; /* Made button slightly bigger */
+            font-size: 1.8rem;
+            /* Made button slightly bigger */
             cursor: pointer;
             z-index: 1001;
         }
@@ -84,12 +89,15 @@
             background: linear-gradient(135deg, #0a1628 0%, #1a2f5a 100%);
             padding: 60px 5% 0;
         }
-        
+
         .hero-content h1 {
             font-size: clamp(3rem, 10vw, 4.5rem);
             margin-bottom: 1rem;
             background: linear-gradient(45deg, #00d9ff, #7b2ff7);
             -webkit-background-clip: text;
+            /* For Safari/Chrome */
+            background-clip: text;
+            /* The standard property (THE FIX) */
             -webkit-text-fill-color: transparent;
         }
 
@@ -130,9 +138,10 @@
             text-align: center;
             background: linear-gradient(45deg, #00d9ff, #7b2ff7);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        
+
         .section-content {
             max-width: 1200px;
             margin-left: auto;
@@ -140,62 +149,79 @@
         }
 
         /* Skills, Projects, Contact Cards */
-        .skills-grid, .projects-grid, .contact-info {
+        .skills-grid,
+        .projects-grid,
+        .contact-info {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
             margin-top: 3rem;
         }
 
-        .skill-card, .project-card, .contact-item {
+        .skill-card,
+        .project-card,
+        .contact-item {
             background: #0f1f3d;
             padding: 2rem;
             border-radius: 15px;
             border: 1px solid #1a2f5a;
             transition: all 0.3s ease;
         }
-        
+
         .project-card {
             display: flex;
             flex-direction: column;
         }
 
-        .skill-card:hover, .project-card:hover, .contact-item:hover {
+        .skill-card:hover,
+        .project-card:hover,
+        .contact-item:hover {
             transform: translateY(-5px);
             border-color: #00d9ff;
         }
 
-        .skill-card h3, .project-title, .contact-item h3 {
+        .skill-card h3,
+        .project-title,
+        .contact-item h3 {
             color: #00d9ff;
             margin-bottom: 1rem;
         }
-        
+
         /* Mobile Menu Styling */
         @media (max-width: 768px) {
             .mobile-menu-btn {
                 display: block;
             }
+
             .nav-links {
                 display: none;
-                position: fixed; /* Changed to fixed for full screen overlay */
+                position: fixed;
+                /* Changed to fixed for full screen overlay */
                 top: 0;
                 left: 0;
                 width: 100%;
                 height: 100%;
                 background: rgba(10, 22, 40, 0.98);
                 flex-direction: column;
-                justify-content: center; /* Center items vertically */
-                align-items: center; /* Center items horizontally */
+                justify-content: center;
+                /* Center items vertically */
+                align-items: center;
+                /* Center items horizontally */
                 gap: 2rem;
                 backdrop-filter: blur(10px);
             }
+
             .nav-links.active {
-                display: flex; /* Show the menu */
+                display: flex;
+                /* Show the menu */
             }
+
             .nav-links li a {
-                font-size: 1.5rem; /* Larger font for better tapping */
+                font-size: 1.5rem;
+                /* Larger font for better tapping */
                 font-weight: bold;
             }
+
             /* Move the close button to the top right */
             .mobile-menu-btn {
                 position: relative;
@@ -204,6 +230,7 @@
         }
     </style>
 </head>
+
 <body>
     <nav>
         <div class="logo">Mudia_dev</div>
@@ -215,7 +242,7 @@
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
-    
+
     <!-- (The rest of your HTML body is fine, but I'll include it for completeness) -->
     <main>
         <section class="hero">
@@ -230,7 +257,8 @@
         <section id="about">
             <div class="section-content">
                 <h2>About Me</h2>
-                <p style="text-align: center; max-width: 800px; margin: 0 auto;">I'm Oyedoh David, a dedicated cybersecurity specialist and developer building secure, scalable web solutions.</p>
+                <p style="text-align: center; max-width: 800px; margin: 0 auto;">I'm Oyedoh David, a dedicated
+                    cybersecurity specialist and developer building secure, scalable web solutions.</p>
             </div>
         </section>
 
@@ -238,10 +266,22 @@
             <div class="section-content">
                 <h2>Technical Expertise</h2>
                 <div class="skills-grid">
-                    <div class="skill-card"><h3>🔐 Cybersecurity</h3><p>Penetration Testing, Vulnerability Assessment, Security Auditing.</p></div>
-                    <div class="skill-card"><h3>💻 Backend</h3><p>Node.js, PHP/Laravel, Python/Django, RESTful APIs.</p></div>
-                    <div class="skill-card"><h3>🎨 Frontend</h3><p>JavaScript, React.js, HTML5 & CSS3, Responsive Design.</p></div>
-                    <div class="skill-card"><h3>🛠️ Tools</h3><p>Git & GitHub, Docker, Linux/Unix, Burp Suite.</p></div>
+                    <div class="skill-card">
+                        <h3>🔐 Cybersecurity</h3>
+                        <p>Penetration Testing, Vulnerability Assessment, Security Auditing.</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>💻 Backend</h3>
+                        <p>Node.js, PHP/Laravel, Python/Django, RESTful APIs.</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>🎨 Frontend</h3>
+                        <p>JavaScript, React.js, HTML5 & CSS3, Responsive Design.</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>🛠️ Tools</h3>
+                        <p>Git & GitHub, Docker, Linux/Unix, Burp Suite.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -250,10 +290,34 @@
             <div class="section-content">
                 <h2>Featured Projects</h2>
                 <div class="projects-grid">
-                    <div class="project-card"><div class="project-content"><h3 class="project-title">Secure E‑commerce API</h3><p class="project-desc">Robust backend with JWT auth and RBAC.</p><a href="#" class="btn">View on GitHub</a></div></div>
-                    <div class="project-card"><div class="project-content"><h3 class="project-title">ThreatWatch Dashboard</h3><p class="project-desc">Real-time security dashboard with alerts.</p><a href="#" class="btn">View on GitHub</a></div></div>
-                    <div class="project-card"><div class="project-content"><h3 class="project-title">Vuln Scanner CLI</h3><p class="project-desc">Python tool for scanning CVEs.</p><a href="#" class="btn">View on GitHub</a></div></div>
-                    <div class="project-card"><div class="project-content"><h3 class="project-title">Portfolio CMS (PHP)</h3><p class="project-desc">Secure CMS with CSRF protection.</p><a href="#" class="btn">View on GitHub</a></div></div>
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3 class="project-title">Secure E‑commerce API</h3>
+                            <p class="project-desc">Robust backend with JWT auth and RBAC.</p><a href="#"
+                                class="btn">View on GitHub</a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3 class="project-title">ThreatWatch Dashboard</h3>
+                            <p class="project-desc">Real-time security dashboard with alerts.</p><a href="#"
+                                class="btn">View on GitHub</a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3 class="project-title">Vuln Scanner CLI</h3>
+                            <p class="project-desc">Python tool for scanning CVEs.</p><a href="#" class="btn">View on
+                                GitHub</a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3 class="project-title">Portfolio CMS (PHP)</h3>
+                            <p class="project-desc">Secure CMS with CSRF protection.</p><a href="#" class="btn">View on
+                                GitHub</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -262,15 +326,24 @@
             <div class="section-content">
                 <h2>Get In Touch</h2>
                 <div class="contact-info">
-                    <div class="contact-item"><h3>📧 Email</h3><a href="mailto:oyedohosemudiamen@gmail.com">oyedohosemudiamen@gmail.com</a></div>
-                    <div class="contact-item"><h3>💬 WhatsApp</h3><a href="https://wa.me/2348030646882" target="_blank">Message Me</a></div>
-                    <div class="contact-item"><h3>💼 GitHub</h3><a href="https://github.com/DavidMudia" target="_blank">DavidMudia</a></div>
-                    <div class="contact-item"><h3>🔗 LinkedIn</h3><a href="https://www.linkedin.com/in/david-mudia-57638a2aa/" target="_blank">Oyedoh David</a></div>
+                    <div class="contact-item">
+                        <h3>📧 Email</h3><a href="mailto:oyedohosemudiamen@gmail.com">oyedohosemudiamen@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <h3>💬 WhatsApp</h3><a href="https://wa.me/2348030646882" target="_blank">Message Me</a>
+                    </div>
+                    <div class="contact-item">
+                        <h3>💼 GitHub</h3><a href="https://github.com/DavidMudia" target="_blank">DavidMudia</a>
+                    </div>
+                    <div class="contact-item">
+                        <h3>🔗 LinkedIn</h3><a href="https://www.linkedin.com/in/david-mudia-57638a2aa/"
+                            target="_blank">Oyedoh David</a>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
-    
+
     <footer>
         <p>&copy; 2024 Mudia_dev | Oyedoh David.</p>
     </footer>
@@ -285,7 +358,7 @@
             // Prevent body scroll when menu is open
             document.body.style.overflow = isActive ? 'hidden' : 'auto';
         });
-        
+
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
@@ -295,4 +368,5 @@
         });
     </script>
 </body>
+
 </html>
