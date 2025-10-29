@@ -28,22 +28,19 @@
             font-size: 16px;
         }
 
-        /* FIX: Prevent body scroll when menu is open */
         body.menu-open {
             overflow: hidden;
         }
 
-        /* FIX: Add blur and opacity effect when menu is open */
         body.menu-open main,
         body.menu-open footer {
-            filter: blur(5px);
-            opacity: 0.6;
-            pointer-events: none; /* Prevents clicking on blurred content */
+            filter: blur(2px);
+            opacity: 0.8;
+            pointer-events: none;
             transition: filter 0.3s ease, opacity 0.3s ease;
         }
         
         main, footer {
-             /* Ensures the effect is smooth when closing the menu */
             transition: filter 0.3s ease, opacity 0.3s ease;
         }
 
@@ -140,89 +137,45 @@
         }
 
         /* Sections */
-        section {
-            padding: 5rem 5%;
-        }
-
-        section:nth-child(even) { background: #0f1f3d; }
-
-        h2 {
-            font-size: clamp(2rem, 7vw, 2.5rem);
-            margin-bottom: 2rem;
-            text-align: center;
-            background: linear-gradient(45deg, #00d9ff, #7b2ff7);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        section { padding: 5rem 5%; }
+        h2 { font-size: clamp(2rem, 7vw, 2.5rem); margin-bottom: 2rem; text-align: center; }
+        .section-content { max-width: 1200px; margin-left: auto; margin-right: auto; }
         
-        .section-content {
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
         /* Cards Styling */
-        .skills-grid, .projects-grid, .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .skill-card, .project-card, .contact-item {
-            background: #0f1f3d;
-            padding: 2rem;
-            border-radius: 15px;
-            border: 1px solid #1a2f5a;
-            transition: all 0.3s ease;
-        }
-        
+        .skills-grid, .projects-grid, .contact-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+        .skill-card, .project-card, .contact-item { background: #0f1f3d; padding: 2rem; border-radius: 15px; border: 1px solid #1a2f5a; transition: all 0.3s ease; }
         .project-card { display: flex; flex-direction: column; }
         .contact-item { text-align: center; }
+        .skill-card:hover, .project-card:hover, .contact-item:hover { transform: translateY(-5px); border-color: #00d9ff; }
+        .skill-card h3, .project-title, .contact-item h3 { color: #00d9ff; margin-bottom: 1rem; }
+        .btn { background: linear-gradient(45deg, #00d9ff, #7b2ff7); color: #fff; padding: 0.5rem 1rem; border-radius: 50px; text-decoration: none; font-weight: bold; display: inline-block; margin-top: auto; }
 
-        .skill-card:hover, .project-card:hover, .contact-item:hover {
-            transform: translateY(-5px);
-            border-color: #00d9ff;
-        }
+        footer { padding: 2rem 5%; background: #050d1a; color: #6b7a99; text-align: center; }
 
-        .skill-card h3, .project-title, .contact-item h3 {
-            color: #00d9ff;
-            margin-bottom: 1rem;
-        }
-
-        /* Footer */
-        footer {
-            padding: 2rem 5%;
-            background: #050d1a;
-            color: #6b7a99;
-            text-align: center;
-        }
-
-        /* Mobile Menu Logic */
+        /* Mobile Menu Styling */
         @media (max-width: 768px) {
             .mobile-menu-btn {
                 display: block;
-                position: relative;
-                z-index: 1001;
             }
             .nav-links {
-                display: none;
                 position: fixed;
                 top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(10, 22, 40, 0.9);
+                right: 0;
+                width: 70%;
+                max-width: 300px;
+                height: 100vh;
+                background: #0f1f3d;
                 flex-direction: column;
-                align-items: center;
-                gap: 2rem;
-                backdrop-filter: blur(10px);
                 justify-content: center;
-                padding-top: 0; /* Reset padding */
+                align-items: flex-end;
+                padding-right: 2rem;
+                gap: 2rem;
+                z-index: 999;
+                transform: translateX(100%);
+                transition: transform 0.3s ease-in-out;
             }
             .nav-links.active {
-                display: flex;
+                transform: translateX(0);
             }
             .nav-links li a {
                 font-size: 1.5rem;
@@ -244,61 +197,19 @@
     </nav>
     
     <main>
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Mudia_dev</h1>
-                <h2>Oyedoh David</h2>
-                <p>Cybersecurity Expert | Full-Stack Developer | Security Consultant</p>
-                <a href="#contact" class="cta-button">Let's Work Together</a>
-            </div>
+       <section class="hero">
+            <div class="hero-content"><h1>Mudia_dev</h1><h2>Oyedoh David</h2><p>Cybersecurity Expert | Full-Stack Developer | Security Consultant</p><a href="#contact" class="cta-button">Let's Work Together</a></div>
         </section>
-
         <section id="about">
-            <div class="section-content">
-                <h2>About Me</h2>
-                <p style="text-align: center; max-width: 800px; margin: 0 auto;">I'm Oyedoh David, a dedicated cybersecurity specialist and developer building secure, scalable web solutions.</p>
-            </div>
+            <div class="section-content"><h2>About Me</h2><p style="text-align:center;max-width:800px;margin:0 auto;">I'm Oyedoh David, a dedicated cybersecurity specialist and developer building secure, scalable web solutions.</p></div>
         </section>
-
-        <section id="skills">
-            <div class="section-content">
-                <h2>Technical Expertise</h2>
-                <div class="skills-grid">
-                    <div class="skill-card"><h3>🔐 Cybersecurity</h3><p>Penetration Testing, Vulnerability Assessment, Security Auditing.</p></div>
-                    <div class="skill-card"><h3>💻 Backend</h3><p>Node.js, PHP/Laravel, Python/Django, RESTful APIs.</p></div>
-                    <div class="skill-card"><h3>🎨 Frontend</h3><p>JavaScript, React.js, HTML5 & CSS3, Responsive Design.</p></div>
-                    <div class="skill-card"><h3>🛠️ Tools</h3><p>Git & GitHub, Docker, Linux/Unix, Burp Suite.</p></div>
-                </div>
-            </div>
-        </section>
-
-        <section id="projects">
-            <div class="section-content">
-                <h2>Featured Projects</h2>
-                <div class="projects-grid">
-                    <div class="project-card"><div class="project-content"><h3 class="project-title">Secure E‑commerce API</h3><p class="project-desc">Robust backend with JWT auth and RBAC.</p><a href="#" class="btn">View on GitHub</a></div></div>
-                    <div class="project-card"><div class="project-content"><h3 class="project-title">ThreatWatch Dashboard</h3><p class="project-desc">Real-time security dashboard with alerts.</p><a href="#" class="btn">View on GitHub</a></div></div>
-                    <div class="project-card"><div class="project-content"><h3 class="project-title">Vuln Scanner CLI</h3><p class="project-desc">Python tool for scanning CVEs.</p><a href="#" class="btn">View on GitHub</a></div></div>
-                    <div class="project-card"><div class="project-content"><h3 class="project-title">Portfolio CMS (PHP)</h3><p class="project-desc">Secure CMS with CSRF protection.</p><a href="#" class="btn">View on GitHub</a></div></div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact">
-            <div class="section-content">
-                <h2>Get In Touch</h2>
-                <div class="contact-info">
-                    <div class="contact-item"><h3>📧 Email</h3><a href="mailto:oyedohosemudiamen@gmail.com">oyedohosemudiamen@gmail.com</a></div>
-                    <div class="contact-item"><h3>💬 WhatsApp</h3><a href="https://wa.me/2348030646882" target="_blank">Message Me</a></div>
-                    <div class="contact-item"><h3>💼 GitHub</h3><a href="https://github.com/DavidMudia" target="_blank">DavidMudia</a></div>
-                    <div class="contact-item"><h3>🔗 LinkedIn</h3><a href="https://www.linkedin.com/in/david-mudia-57638a2aa/" target="_blank">Oyedoh David</a></div>
-                </div>
-            </div>
-        </section>
+        <section id="skills" style="background:#0f1f3d;"><div class="section-content"><h2>Technical Expertise</h2><div class="skills-grid"><div class="skill-card"><h3>🔐 Cybersecurity</h3><p>Penetration Testing, Vulnerability Assessment, Security Auditing.</p></div><div class="skill-card"><h3>💻 Backend</h3><p>Node.js, PHP/Laravel, Python/Django, RESTful APIs.</p></div><div class="skill-card"><h3>🎨 Frontend</h3><p>JavaScript, React.js, HTML5 & CSS3, Responsive Design.</p></div><div class="skill-card"><h3>🛠️ Tools</h3><p>Git & GitHub, Docker, Linux/Unix, Burp Suite.</p></div></div></div></section>
+        <section id="projects"><div class="section-content"><h2>Featured Projects</h2><div class="projects-grid"><div class="project-card"><div class="project-content"><h3>Secure E‑commerce API</h3><p>Robust backend with JWT auth and RBAC.</p><a href="#" class="btn">View on GitHub</a></div></div><div class="project-card"><div class="project-content"><h3>ThreatWatch Dashboard</h3><p>Real-time security dashboard with alerts.</p><a href="#" class="btn">View on GitHub</a></div></div><div class="project-card"><div class="project-content"><h3>Vuln Scanner CLI</h3><p>Python tool for scanning CVEs.</p><a href="#" class="btn">View on GitHub</a></div></div><div class="project-card"><div class="project-content"><h3>Portfolio CMS (PHP)</h3><p>Secure CMS with CSRF protection.</p><a href="#" class="btn">View on GitHub</a></div></div></div></div></section>
+        <section id="contact" style="background:#0f1f3d;"><div class="section-content"><h2>Get In Touch</h2><div class="contact-info"><div class="contact-item"><h3>📧 Email</h3><a href="mailto:oyedohosemudiamen@gmail.com">oyedohosemudiamen@gmail.com</a></div><div class="contact-item"><h3>💬 WhatsApp</h3><a href="https://wa.me/2348030646882" target="_blank">Message Me</a></div><div class="contact-item"><h3>💼 GitHub</h3><a href="https://github.com/DavidMudia" target="_blank">DavidMudia</a></div><div class="contact-item"><h3>🔗 LinkedIn</h3><a href="https://www.linkedin.com/in/david-mudia-57638a2aa/" target="_blank">Oyedoh David</a></div></div></div></section>
     </main>
     
     <footer>
-        <p>&copy; 2024 Mudia_dev | Oyedoh David. All rights reserved.</p>
+        <p>&copy; 2025 Mudia_dev | Oyedoh David. All rights reserved.</p>
     </footer>
 
     <script>
@@ -307,17 +218,17 @@
 
         mobileMenuBtn.addEventListener('click', () => {
             const isActive = navLinks.classList.toggle('active');
-            // FIX: Toggle class on body for blur effect
             document.body.classList.toggle('menu-open', isActive);
             mobileMenuBtn.textContent = isActive ? '✕' : '☰';
         });
         
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                // FIX: Also remove body class on link click
-                document.body.classList.remove('menu-open');
-                mobileMenuBtn.textContent = '☰';
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    document.body.classList.remove('menu-open');
+                    mobileMenuBtn.textContent = '☰';
+                }
             });
         });
     </script>
